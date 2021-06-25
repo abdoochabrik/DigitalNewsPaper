@@ -11,7 +11,9 @@ Widget listWidget(Listitem item) {
       padding: EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Container(
+          Hero(
+            tag: '${item.newsTitle}',
+            child: Container(
             width: 80,
             height: 80.0,
             decoration: BoxDecoration(
@@ -22,6 +24,7 @@ Widget listWidget(Listitem item) {
               borderRadius: BorderRadius.circular(8.0),
             ),
 
+          ),
           ),
           SizedBox(width: 5.0),
           Expanded(child: Column(
