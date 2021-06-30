@@ -3,11 +3,10 @@ import 'package:flutter_application_1/models/news_model.dart';
 import 'package:http/http.dart' as http;
 
 class NewsService {
-  static const url = 'https://news-appli.herokuapp.com/news';
+  static const url = 'https://news-appli.herokuapp.com/news/categorie/';
 
-  Future<List<News>?> getNews() async {
-    // return
-    var response = await http.get(Uri.parse(url));
+  Future<List<News>?> getNews(String category) async {
+    var response = await http.get(Uri.parse('$url$category'));
     List<News> news = [];
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
