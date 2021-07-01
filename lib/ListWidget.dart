@@ -42,7 +42,7 @@ Widget listWidget(News news) {
                 children: [
                   Icon(Icons.person),
                   Text(
-                    '${news.imageUrl}',
+                    '${news.author}',
                     style: TextStyle(
                       fontSize: 12.0,
                     ),
@@ -51,10 +51,10 @@ Widget listWidget(News news) {
                     width: 10,
                   ),
                   Icon(Icons.date_range),
-                  Text(
-                    '${news.date}',
+                Text(
+                    '${news.date?.year}-${news.date?.month}-${news.date?.day}',
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 8.0,
                     ),
                   ),
                 ],

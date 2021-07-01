@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/news_model.dart';
-
+//import 'package:timeago/timeago.dart' as timeago;
 class Details extends StatelessWidget {
   String? tag;
   News? item;
@@ -19,9 +19,14 @@ class Details extends StatelessWidget {
               children: [
                 Hero(
                     tag: '${item?.title}',
-                    child: Image.network('${item?.imageUrl}')),
+                    child: Image.network('${item?.imageUrl}', height: 300,
+                  width: MediaQuery.of(context).size.width,
+                  fit:BoxFit.cover)),
                 SizedBox(
-                  height: 10.0,
+                  height: 10,
+                  //BoxFit.fill
+                  //fit:BoxFit.fill
+                  //width: 100,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -47,7 +52,7 @@ class Details extends StatelessWidget {
                           ),
                           Icon(Icons.date_range),
                           Text(
-                            '${item?.date}',
+                            '${(item?.date)}',
                             style: TextStyle(fontSize: 12.0),
                           ),
                         ],
@@ -56,7 +61,7 @@ class Details extends StatelessWidget {
                         height: 20.0,
                       ),
                       Text(
-                        '${item?.details}',
+                        '${item?.description}',
                         style: TextStyle(
                           fontSize: 18.0,
                         ),
@@ -68,7 +73,7 @@ class Details extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 12.0),
+            padding: EdgeInsets.only(top: 1.0),
             child: IconButton(
               onPressed: () {
                 Navigator.pop(context);
