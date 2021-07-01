@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/shared/Listitem.dart';
-//import 'shared/Listitem.dart';
+import 'package:flutter_application_1/models/news_model.dart';
 
-Widget listWidget(Listitem item) {
-
-   return Card(
+Widget listWidget(News news) {
+  return Card(
     elevation: 2.0,
     margin: EdgeInsets.only(bottom: 20.0),
     child: Padding(
@@ -12,49 +10,53 @@ Widget listWidget(Listitem item) {
       child: Row(
         children: [
           Hero(
-            tag: '${item.newsTitle}',
+            tag: '${news.title}',
             child: Container(
-            width: 80,
-            height: 80.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(item.imageurl),
-                fit: BoxFit.cover,
+              width: 80,
+              height: 80.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage('${news.imageUrl}'),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(8.0),
               ),
-              borderRadius: BorderRadius.circular(8.0),
             ),
-
-          ),
           ),
           SizedBox(width: 5.0),
-          Expanded(child: Column(
+          Expanded(
+              child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                item.newsTitle,
+                '${news.title}',
                 style: TextStyle(
                   fontSize: 18.0,
-                  ),
+                ),
               ),
-              SizedBox(height: 5.0,),
+              SizedBox(
+                height: 5.0,
+              ),
               Row(
                 children: [
                   Icon(Icons.person),
                   Text(
-                    item.author,
-                    style: TextStyle(fontSize: 12.0,
+                    '${news.imageUrl}',
+                    style: TextStyle(
+                      fontSize: 12.0,
                     ),
-                    ),
-             SizedBox(
-               width: 10,
-             ),
-             Icon(Icons.date_range),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(Icons.date_range),
                   Text(
-                    item.date,
-                    style: TextStyle(fontSize: 12.0,
+                    '${news.date}',
+                    style: TextStyle(
+                      fontSize: 12.0,
                     ),
-                    ),
+                  ),
                 ],
               )
             ],
@@ -62,6 +64,5 @@ Widget listWidget(Listitem item) {
         ],
       ),
     ),
-   );
-
+  );
 }
